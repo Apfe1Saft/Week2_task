@@ -176,13 +176,19 @@ module.hot.accept(reloadCSS);
 "use strict";
 
 require("./styles.css");
-var button = document.getElementById("submit");
+var button = document.getElementById("submit-data");
 button.addEventListener("click", clickSubmit);
 var username = document.getElementsByName("input-username");
 var email = document.getElementsByName("input-email");
 var address = document.getElementsByName("input-address");
 var admin = document.getElementsByName("input-admin");
 var table = document.getElementById("table");
+var buttonEmpty = document.getElementById("empty-table");
+buttonEmpty.addEventListener("click", clickEmpty);
+function clickEmpty() {
+  var table = document.getElementById("table");
+  table.innerHTML = "";
+}
 function clickSubmit() {
   var table = document.getElementById("table");
   var row = document.createElement("tr");

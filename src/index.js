@@ -1,10 +1,29 @@
 import "./styles.css";
+const button = document.getElementById("submit");
+button.addEventListener("click", clickSubmit);
+const username = document.getElementsByName("input-username");
+const email = document.getElementsByName("input-email");
+const address = document.getElementsByName("input-address");
+const admin = document.getElementsByName("input-admin");
+const table = document.getElementById("table");
 
-document.getElementById("app").innerHTML = `
-<h1>Hello Vanilla!</h1>
-<div>
-  We use the same configuration as Parcel to bundle this sandbox, you can find more
-  info about Parcel 
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-</div>
-`;
+function clickSubmit() {
+      let table = document.getElementById("table");
+      
+      let row = document.createElement("tr");
+      let c1 = document.createElement("td");
+      let c2 = document.createElement("td");
+      let c3 = document.createElement("td");
+      let c4 = document.createElement("td");
+      
+      c1.innerText = "Elon"
+      c2.innerText = "42"
+      c3.innerText = "Houston"
+      c4.innerText = "C++"
+      
+      row.appendChild(c1);
+      row.appendChild(c2);
+      row.appendChild(c3);
+      row.appendChild(c4);
+      table.appendChild(row)
+}

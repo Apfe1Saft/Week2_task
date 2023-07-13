@@ -5,33 +5,39 @@
 	<title>Parcel Sandbox</title>
 	<meta charset="UTF-8" />
 </head>
-
-<form id = "table">
+<body>
+<form onsubmit="clickSubmit(event)">
   <label for="input-username">Username:</label>
   <input type="text" id="input-username" name="input-username"><br><br>
+  <br>
   <label for="input-email">Email:</label>
   <input type="text" id="input-email" name="input-email"><br><br>
+  <br>
   <label for="input-address">Address:</label>
   <input type="text" id="input-address" name="input-address"><br><br>
+  <br>
   <label for="input-admin">Admin:</label>
-  <input type="checkbox" id="input-admin" name="input-admin"><br><br>
+  <input type="text" id="input-admin" name="input-admin"><br><br>
+  <br>
   <input type="submit" value="Submit" id = "submit-data">
 </form>
-<button id="empty-table">empty table</button>
-<table>
-	<tr>
+<table id = "table">
+  <thread>
+	<tr id ="def1">
     <th>Username</th>
     <th>Email</th>
     <th>Address</th>
 	<th>Admin</th>
   </tr>
-  <tr>
+</thread>
+<tbody id = "tbody">
+  <tr rid ="def2">
     <td>Webmaster</td>
     <td>example@email.com</td>
     <td>Demoland</td>
 	<td>X</td>
   </tr>
-  <tr>
+  <tr id ="def3">
     <td>User123</td>
     <td>example@email.com	</td>
     <td>Userplace</td>
@@ -43,11 +49,52 @@
     <td>AnotherPlace</td>
 	<td>-</td>
   </tr>
+</tbody>
 </table>
-<body>
+
+<button onclick="clearTable()" id="empty-table" >empty table</button>
 	<div id="app"></div>
 
-	<script src="src/index.js">
+	<script>
+    
+function clickEmpty() {
+  var tableBody = document.getElementById('table').getElementsByTagName('tbody')[0];
+  tableBody.innerHTML = ''; // Remove all rows from the table
+}
+
+function clickSubmit(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Get input values
+  var name = document.getElementById('input-username').value;
+  var email = document.getElementById('input-email').value;
+  var address = document.getElementById('input-address').value;
+  var admin = document.getElementById('input-admin').value;
+
+  // Create a new row with the input data
+  var newRow = document.createElement('tr');
+  newRow.innerHTML = '<td>' + name + '</td>' +
+                     '<td>' + email + '</td>' +
+                     '<td>' + address + '</td>' +
+                     '<td>' + admin + '</td>';
+
+  // Append the new row to the table
+  var tableBody = document.getElementById('table').getElementsByTagName('tbody')[0];
+  tableBody.appendChild(newRow);
+
+  // Reset the form
+  document.getElementById('input-username').value = '';
+  document.getElementById('input-email').value = '';
+  document.getElementById('input-address').value = '';
+  document.getElementById('input-admin').value = '';
+}
+
+function clearTable() {
+  var tableBody = document.getElementById('tbody');
+      tableBody.innerHTML = ''; // Remove all rows from the table
+    
+}
+
 	</script>
 </body>
 
